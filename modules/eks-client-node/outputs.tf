@@ -8,7 +8,7 @@ output "eks_client_sg" {
 
 output "eks_client_instance_profile" {
   description = "IAM instance profile assigned to EKS client node"
-  value       = aws_iam_instance_profile.eks_client_ssm_profile.name
+  value       = aws_iam_instance_profile.eks_client_ssm_profile1.name
 }
 
 # (Optional) Output the private key for SSH access.

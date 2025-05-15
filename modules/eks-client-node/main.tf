@@ -98,7 +98,7 @@ resource "aws_instance" "eks_client_node" {
   instance_type          = var.instance_type
   subnet_id              = var.subnet_id
   vpc_security_group_ids = [aws_security_group.eks_client_sg.id]
-  iam_instance_profile   = aws_iam_instance_profile.eks_client_ssm_profile.name
+  iam_instance_profile   = aws_iam_instance_profile.eks_client_ssm_profile1.name
   key_name               = aws_key_pair.eks_client_key.key_name
   tags                   = var.tags
 
@@ -111,7 +111,7 @@ resource "aws_instance" "eks_client_node" {
   user_data = var.user_data
 
   depends_on = [
-    aws_iam_instance_profile.eks_client_ssm_profile
+    aws_iam_instance_profile.eks_client_ssm_profile1
   ]
 }
 
