@@ -54,7 +54,7 @@ resource "aws_iam_role_policy_attachment" "eks_client_ssm_policy_attach" {
 
 # Allow EKS client node to update kubeconfig and interact with EKS API
 resource "aws_iam_policy" "eks_client_eks_access" {
-  name        = "EKSClientEKSAccessPolicy"
+  name        = "EKSClientEKSAccessPolicy1"
   description = "Allows EKS client instance to access and update EKS kubeconfig"
 
   policy = jsonencode({
@@ -83,8 +83,8 @@ resource "aws_iam_role_policy_attachment" "eks_client_eks_access_attach" {
 }
 
 # Create an instance profile for the EC2 instance to use the IAM Role
-resource "aws_iam_instance_profile" "eks_client_ssm_profile" {
-  name = "eks-client-ssm-profile"
+resource "aws_iam_instance_profile" "eks_client_ssm_profile1" {
+  name = "eks-client-ssm-profile1"
   role = aws_iam_role.eks_client_ssm_role1.name
 }
 

@@ -1,10 +1,10 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "us-east-2"
 }
 
 # IAM Role for GitHub Actions
 resource "aws_iam_role" "github_actions_role" {
-  name = "${var.environment}-GitHubActionsECR"
+  name = "${var.environment}-GitHubActionsECR1"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
