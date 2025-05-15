@@ -48,7 +48,7 @@ resource "aws_iam_role" "eks_client_ssm_role1" {
 
 # Attach SSM Agent Policy to allow AWS Session Manager functionality
 resource "aws_iam_role_policy_attachment" "eks_client_ssm_policy_attach" {
-  role       = aws_iam_role.eks_client_ssm_role.name
+  role       = aws_iam_role.eks_client_ssm_role1.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
@@ -78,14 +78,14 @@ resource "aws_iam_policy" "eks_client_eks_access" {
 
 # Attach policy to IAM role
 resource "aws_iam_role_policy_attachment" "eks_client_eks_access_attach" {
-  role       = aws_iam_role.eks_client_ssm_role.name
+  role       = aws_iam_role.eks_client_ssm_role1.name
   policy_arn = aws_iam_policy.eks_client_eks_access.arn
 }
 
 # Create an instance profile for the EC2 instance to use the IAM Role
 resource "aws_iam_instance_profile" "eks_client_ssm_profile" {
   name = "eks-client-ssm-profile"
-  role = aws_iam_role.eks_client_ssm_role.name
+  role = aws_iam_role.eks_client_ssm_role1.name
 }
 
 #############################
