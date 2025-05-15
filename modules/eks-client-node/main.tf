@@ -115,14 +115,27 @@ resource "aws_instance" "eks_client_node" {
   ]
 }
 
-resource "aws_eip" "eks_client_eip" {
-  instance = aws_instance.eks_client_node.id
-  vpc      = true
 
-  depends_on = [
-    aws_instance.eks_client_node
-  ]
+resource "aws_instance" "eks_client" {
+  ami           = "ami-06c8f2ec674c67112"
+  instance_type = "t3.micro"
+  subnet_id     = var.subnet_id
+
+  associate_public_ip_address = true
+
+  tags = {
+    Name = "eks-client"
+  }
 }
+
+# resource "aws_eip" "eks_client_eip" {
+  # instance = aws_instance.eks_client_node.id
+  #vpc      = true
+
+  #depends_on = [
+    #aws_instance.eks_client_node
+ # ]
+#}
 
 
 #############################
